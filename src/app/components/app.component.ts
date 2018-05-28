@@ -7,8 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   
-
-  MyLove: string = 'Tania';
-
+  links: object[] = [
+    { path: '/main', label: 'Главная', active: 'button-active', icon: 'home'}, 
+    { path: '/films', label: 'Все фильмы', active: 'button-active', icon: 'list_alt'}
+  ];
 
 }

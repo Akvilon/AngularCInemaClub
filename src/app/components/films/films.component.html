@@ -1,0 +1,33 @@
+
+
+<div class="wrapper" style="padding:30px;">
+
+
+  
+    <mat-grid-list cols="3" gutterSize="180px" rowHeight=1:1>
+
+        <mat-grid-tile *ngFor="let film of films">
+
+            
+            <mat-card class="example-card">
+                <mat-card-header>
+                  <mat-card-title>{{film.name}}</mat-card-title>
+                  <mat-card-subtitle>{{film.year}}</mat-card-subtitle>
+                </mat-card-header>
+    
+                <img mat-card-image src="{{film.imgUrl}}" alt="Photo of the film">
+                <mat-card-content>
+                  <p>
+                    {{film.description}}
+                  </p>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-button>LIKE</button>
+                  <button mat-button>SHARE</button>
+                </mat-card-actions>
+            </mat-card>
+
+        </mat-grid-tile>
+
+      </mat-grid-list>
+</div>

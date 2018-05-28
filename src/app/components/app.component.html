@@ -1,11 +1,20 @@
+<mat-toolbar color="primary">
+        <mat-toolbar-row>
+          <span>Films Catalog</span>
+          <span class="example-spacer"></span>
+
+          <div style="margin-left:auto;">
+                <a mat-button 
+                *ngFor="let link of links" 
+                [routerLink]="link.path" 
+                [routerLinkActive]="link.active"> 
+                <mat-icon style="padding-right: 15px;" class="example-icon">{{link.icon}}</mat-icon>{{link.label}}
+            </a>
+          </div>
+          
+        </mat-toolbar-row>
+      </mat-toolbar>
+    
 
 
-
-<div style="margin: 100px 50px;">
-
-  
-
-  <button mat-raised-button color="primary">Push</button>
-</div>
-
-
+<router-outlet></router-outlet>
