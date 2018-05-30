@@ -12,6 +12,9 @@ import { MainComponent } from '../../components/main/main.component';
   declarations: [
     FilmsComponent,
     MainComponent
+  ],
+  exports:[
+    FilmsComponent
   ]
 })
 export class FilmCatalogModule { }

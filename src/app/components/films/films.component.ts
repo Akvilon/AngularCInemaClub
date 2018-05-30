@@ -8,19 +8,15 @@ import { FilmService } from '../../services/film.service';
 })
 export class FilmsComponent implements OnInit {
 
-  сolspan:number = 1;
-  rowspan:number = 1;
-
   films = [];
   
 
   constructor(private filmService: FilmService) { 
    
-    this.films = filmService.films;
   }
 
   ngOnInit() {
-    
+    this.films = this.filmService.getFilm();
   }
 
 }
