@@ -1,20 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FilmsComponent } from '../../components/films/films.component';
+import { FilmsListComponent } from '../../components/films-list/films-list.component';
 import { MaterialModule } from '../material.module';
 import { MainComponent } from '../../components/main/main.component';
+import { FilmsItemComponent } from '../../components/films-list/films-item/films-item.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   declarations: [
-    FilmsComponent,
-    MainComponent
+    FilmsListComponent,
+    MainComponent,
+    FilmsItemComponent
   ],
   exports:[
-    FilmsComponent
+    FilmsListComponent,
+    FilmsItemComponent
   ]
 })
 export class FilmCatalogModule { }

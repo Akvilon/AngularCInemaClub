@@ -7,6 +7,8 @@ import { MaterialModule } from './material.module';
 import { FilmCatalogModule } from './film-catalog/film-catalog.module';
 import { AppComponent } from '../components/app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -19,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
     MaterialModule,
     FilmCatalogModule,
     AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,36 @@
+
+
+<div class="wrapper">
+
+  <div class="top">
+    <mat-card>
+        <mat-toolbar>
+            <mat-toolbar-row>
+              <div class="top-value">
+                  <i class="material-icons" *ngIf="count === 0">star_border</i>
+                  <i class="material-icons" *ngIf="count > 0">star</i>
+                  <span>Избранное:</span>
+                  <span style="padding-top:5px;">{{count}}</span>
+              </div>
+              <div class="top-select">
+                  <mat-form-field>
+                      <mat-select placeholder="Сортировать" (selectionChange)="sortFilmsItems($event)">
+                        <mat-option *ngFor="let sort of sorting" [value]="sort.value">
+                          {{ sort.viewValue }}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+              </div>
+            </mat-toolbar-row>
+          </mat-toolbar> 
+    </mat-card>
+      
+  </div>
+
+  
+  <div class="inner">
+
+    <films-item *ngFor="let film of films" [filmName]="film.name" [filmYear]="film.year" [filmImgUrl]="film.imgUrl" [filmDescription]="film.description" (favorites)="setFavoritesFilms($event)"></films-item>
+
+  </div>
+</div>

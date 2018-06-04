@@ -1,0 +1,55 @@
+@import "../../../variables";
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0px 15px 0px;
+
+    .top {
+        display: flex;
+        width: 66%;
+        margin-right:20px;
+        margin-bottom: 30px;
+        background: $snow;
+
+        .top-value {
+            display: flex;
+            align-items: center;
+            & i {
+                font-size: 36px;
+                color: $gold;
+            }
+            & span {
+                font-size: 18px;
+                padding-left: 10px;
+                padding-top: 3px;
+                font-weight: 300;
+            }
+        }
+        .top-select {
+            margin-left: auto;
+        }
+        .mat-card {
+            width: 100%;
+            padding: 5px 12px;
+
+            box-shadow: 0 3px 18px -2px rgba(0,0,0,.2), 
+                        0 2px 2px 0 rgba(0,0,0,.14), 
+                        0 1px 5px 0 rgba(0,0,0,.12);
+        }
+        .mat-toolbar {
+            color: $main;
+            background: $snow;
+        }
+    }
+    .inner {
+        width: 88%;
+        display: flex;
+        align-items:flex-start;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
