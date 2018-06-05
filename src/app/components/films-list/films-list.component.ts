@@ -20,14 +20,7 @@ export class FilmsListComponent implements OnInit {
   ];
 
 
-  constructor(private filmService: FilmService) { 
-   
-  }
-
-  ngOnInit() {
-    this.films = this.filmService.getFilm();
-  }
-
+  constructor(private filmService: FilmService) {}
 
 
   setFavoritesFilms(ev) {
@@ -41,27 +34,43 @@ export class FilmsListComponent implements OnInit {
   sortFilmsItems(event) {
 
     if(event.value == "az") {
-      this.films.sort(function( a:Film, b:Film ){
-        if(a.name < b.name) {
-          return -1;
-        }else if(a.name > b.name){
-          return 1;
-        }else {
-          return 0;
-        }
-      });
+     return this.sortAZ();
     }else if(event.value == "za") {
-      this.films.sort(function( a:Film, b:Film ){
-        if(a.name < b.name) {
-          return 1;
-        }else if(a.name > b.name){
-          return -1;
-        }else {
-          return 0;
-        }
-      });
+      return this.sortZA();
     }
   }
+
+  sortAZ() {
+    this.films.sort(function( a:Film, b:Film ){
+      if(a.name < b.name) {
+        return -1;
+      }else if(a.name > b.name){
+        return 1;
+      }else {
+        return 0;
+      }
+    });
+  }
+
+  sortZA() {
+    this.films.sort(function( a:Film, b:Film ){
+      if(a.name < b.name) {
+        return 1;
+      }else if(a.name > b.name){
+        return -1;
+      }else {
+        return 0;
+      }
+    });
+  }
+
+  ngOnInit() {
+    this.films = this.filmService.getFilm();
+  }
+
+
+
+  
 
   
 

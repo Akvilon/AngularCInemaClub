@@ -30,7 +30,7 @@
   
   <div class="inner">
 
-    <films-item *ngFor="let film of films" [filmName]="film.name" [filmYear]="film.year" [filmImgUrl]="film.imgUrl" [filmDescription]="film.description" (favorites)="setFavoritesFilms($event)"></films-item>
+    <films-item *ngFor="let film of films" [film]="film" (favorites)="setFavoritesFilms($event)"></films-item>
 
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { Film } from '../../../models/film.model';
 
 @Component({
   selector: 'films-item',
@@ -8,11 +9,8 @@ import { EventEmitter } from '@angular/core';
 })
 export class FilmsItemComponent implements OnInit {
 
-  @Input() filmName: string;
-  @Input() filmYear: string;
-  @Input() filmImgUrl: string;
-  @Input() filmDescription: string;
-
+  @Input() film: Film;
+  
   @Output() favorites = new EventEmitter<boolean>();
 
   isSelected:boolean = false;
@@ -23,7 +21,7 @@ export class FilmsItemComponent implements OnInit {
     this.isSelected = !this.isSelected;
     this.favorites.emit(this.isSelected);
 
-    console.log(this.favorites);
+    console.log(this.isSelected);
   }
 
   ngOnInit() {
