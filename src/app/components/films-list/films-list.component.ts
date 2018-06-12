@@ -20,6 +20,7 @@ export class FilmsListComponent implements OnInit {
   message:string = '';
 
   filmsPerPage:number = 3;
+  viewFilms= [];
   
 
 
@@ -84,12 +85,25 @@ export class FilmsListComponent implements OnInit {
     
   }
 
+  showMore(){
+    let countShowFilms = this.viewFilms.length;
+    for(let i=0;i<this.filmsPerPage;i++){
+      let currentIndex = i + countShowFilms;
+      if(currentIndex < this.films.length){
+        let film = this.films[currentIndex];
+        this.viewFilms.push(film);
+      }
+      
+    }
+  }
+
 
   ngOnInit() {
     
     this.films = this.filmService.getFilm();
-    
-    console.log(this.films.length);
+
+    this.showMore();
+
 
     this.favorites = this.films.filter(el => el.favorite);
     this.count += this.favorites.length;
