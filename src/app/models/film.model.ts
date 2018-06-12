@@ -7,4 +7,5 @@ export class Film {
     year:string;
     imgUrl:string;
     description:string;
+    favorite:boolean;
 }

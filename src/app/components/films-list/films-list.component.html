@@ -5,12 +5,20 @@
   <div class="top">
     <mat-card>
         <mat-toolbar>
-            <mat-toolbar-row>
+            <mat-toolbar-row style="justify-content: space-between;">
               <div class="top-value">
                   <i class="material-icons" *ngIf="count === 0">star_border</i>
                   <i class="material-icons" *ngIf="count > 0">star</i>
                   <span>Избранное:</span>
                   <span style="padding-top:5px;">{{count}}</span>
+              </div>
+              <div class="top-search">
+                <mat-form-field class="example-form-field">
+                  <input matInput type="text" placeholder="Search" [(ngModel)]="value"/>
+                  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                </mat-form-field>
               </div>
               <div class="top-select">
                   <mat-form-field>
@@ -30,7 +38,7 @@
   
   <div class="inner">
 
-    <films-item *ngFor="let film of films" [film]="film" (favorites)="setFavoritesFilms($event)"></films-item>
+    <films-item *ngFor="let film of films" [film]="film" (clickedItem)="setFavoritesFilmsNum($event)"></films-item>
 
   </div>
 </div>

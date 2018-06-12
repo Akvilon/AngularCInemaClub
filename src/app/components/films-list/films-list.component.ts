@@ -2,6 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { FilmService } from '../../services/film.service';
 import { Film } from '../../models/film.model';
 
+
 @Component({
   selector: 'films-list',
   templateUrl: './films-list.component.html',
@@ -11,8 +12,13 @@ export class FilmsListComponent implements OnInit {
  
   
   films = [];
-
+  isFavorites: boolean;
   count:number = 0;
+  value;
+
+
+
+
 
  sorting = [
     {value: 'az', viewValue: 'от А до Я'},
@@ -23,13 +29,13 @@ export class FilmsListComponent implements OnInit {
   constructor(private filmService: FilmService) {}
 
 
-  setFavoritesFilms(ev) {
-    if(ev){
-      this.count = this.count + 1;
-    }else {
-      this.count = this.count - 1;
-    }
+  
+
+  setFavoritesFilmsNum(ev) {
+    this.count += ev ? 1: -1; 
+    
   }
+
 
   sortFilmsItems(event) {
 
@@ -66,36 +72,13 @@ export class FilmsListComponent implements OnInit {
 
   ngOnInit() {
     this.films = this.filmService.getFilm();
+  
+    let x = this.films.filter(el => el.favorite);
+    console.log(x);
+    this.count += x.length;
+
+    console.log(this.value);
   }
 
 
-
-  
-
-  
-
-
-
-
-
-
 }
-
-// this.films.sort( function(name1, name2) {
-    //   if ( name1.name < name2.name ){
-    //     return -1;
-    //   }else if( name1.name > name2.name ){
-    //     return 1;
-    //   }else{
-    //     return 0;	
-    //   }
-    // });
-
-
-  //   else {
-  //     this.films.sort( function(name1, name2) {
-  //       if ( name1.name > name2.name ){
-  //         return 1;
-  //       }
-  // });
-  //   }

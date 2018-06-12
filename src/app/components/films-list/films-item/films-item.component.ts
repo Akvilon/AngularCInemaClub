@@ -11,18 +11,25 @@ export class FilmsItemComponent implements OnInit {
 
   @Input() film: Film;
   
-  @Output() favorites = new EventEmitter<boolean>();
+  @Output() clickedItem = new EventEmitter<boolean>();
 
-  isSelected:boolean = false;
+  isSelected:boolean;
 
   constructor() { }
 
-  addToFavorites() {
+  sendClickedItem() {
     this.isSelected = !this.isSelected;
-    this.favorites.emit(this.isSelected);
-
-    console.log(this.isSelected);
+    this.film.favorite = this.isSelected;
+    this.clickedItem.emit(this.film.favorite);
+    console.log(this.clickedItem);
   }
+
+  // addToFavorites() {
+  //   this.isSelected = !this.isSelected;
+  //   this.favorites.emit(this.isSelected);
+
+  //   console.log(this.isSelected);
+  // }
 
   ngOnInit() {
   
