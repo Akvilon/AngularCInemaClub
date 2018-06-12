@@ -14,9 +14,13 @@ export class FilmsListComponent implements OnInit {
   films = [];
   isFavorites: boolean;
   count:number = 0;
-  value;
+  favorites;
+  value:string ='';
+  filmNames = [];
+  message:string = '';
 
-
+  filmsPerPage:number = 3;
+  
 
 
 
@@ -33,7 +37,6 @@ export class FilmsListComponent implements OnInit {
 
   setFavoritesFilmsNum(ev) {
     this.count += ev ? 1: -1; 
-    
   }
 
 
@@ -70,14 +73,27 @@ export class FilmsListComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.films = this.filmService.getFilm();
-  
-    let x = this.films.filter(el => el.favorite);
-    console.log(x);
-    this.count += x.length;
 
-    console.log(this.value);
+  searchFilms() {
+    if(this.value.length > 3 || this.value.length === 0) {
+      this.films = this.filmService.getFilmsByName(this.value);
+      this.message = '';
+    }else {
+      this.message = "Введите более 3-х букв";
+    }
+    
+  }
+
+
+  ngOnInit() {
+    
+    this.films = this.filmService.getFilm();
+    
+    console.log(this.films.length);
+
+    this.favorites = this.films.filter(el => el.favorite);
+    this.count += this.favorites.length;
+    
   }
 
 

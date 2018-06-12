@@ -7,47 +7,107 @@
     justify-content: center;
     padding: 15px 0px 15px 0px;
 
-    .top {
-        display: flex;
-        width: 66%;
-        margin-right:20px;
-        margin-bottom: 15px;
-        background: $snow;
-
-        .top-value {
-            display: flex;
-            align-items: center;
-            & i {
-                font-size: 36px;
-                color: $gold;
-            }
-            & span {
-                font-size: 18px;
-                padding-left: 10px;
-                padding-top: 3px;
-                font-weight: 300;
-            }
-        }
-        
-        .mat-card {
-            width: 100%;
-            padding: 5px 12px;
-
-            box-shadow: 0 3px 18px -2px rgba(0,0,0,.2), 
-                        0 2px 2px 0 rgba(0,0,0,.14), 
-                        0 1px 5px 0 rgba(0,0,0,.12);
-        }
-        .mat-toolbar {
-            color: $main;
-            background: $snow;
-        }
-    }
+    
     .inner {
-        width: 88%;
+        width: 1275px;
         display: flex;
         align-items:flex-start;
-        justify-content: center;
         flex-wrap: wrap;
+
+        .top {
+            display: flex;
+            width: 100%;
+            margin-right:20px;
+            margin-bottom: 15px;
+            background: $snow;
+    
+            .top-value {
+                display: flex;
+                align-items: center;
+                & i {
+                    font-size: 36px;
+                    color: $gold;
+                }
+                & span {
+                    font-size: 18px;
+                    padding-left: 10px;
+                    padding-top: 3px;
+                    font-weight: 300;
+                }
+            }
+    
+            .top-search {
+                display: flex;
+                align-items: center;
+                width: 400px;
+                position: relative;
+    
+                .mat-form-field {
+                    width: 250px;
+                }
+    
+    
+                .search_btn {
+                    height: 27px;
+                    min-width: 40px;
+                    background: none;
+                    color: $main;
+                    padding:0;
+                    line-height: 23px;
+                    margin-left: 3px;
+                }
+
+                .error {
+                    height: 18px;
+                    line-height: 18px;
+                    position: absolute;
+                    bottom:0;
+                    left:0;
+                    font-size: 0.750em;
+                    color: $error;
+                    margin:0;
+                    font-weight: 300;
+                }
+            }
+            
+            .mat-card {
+                width: 100%;
+                padding: 5px 12px;
+    
+                box-shadow: 0 3px 18px -2px rgba(0,0,0,.2), 
+                            0 2px 2px 0 rgba(0,0,0,.14), 
+                            0 1px 5px 0 rgba(0,0,0,.12);
+            }
+            .mat-toolbar {
+                color: $main;
+                background: $snow;
+            }
+        }
+    }
+
+    .show_more {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        & button {
+            background: $main;
+            color: $snow;
+        }
+    }
+
+    .noFound {
+       margin:auto;
+       margin-top: 300px;
+
+       & h2 {
+           color: $main;
+       }
     }
 }
 
+@media only screen and (max-width: 1365px) {
+    .wrapper .inner {
+        width: 850px;
+    }
+}

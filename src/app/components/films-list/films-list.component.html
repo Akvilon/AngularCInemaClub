@@ -2,43 +2,58 @@
 
 <div class="wrapper">
 
-  <div class="top">
-    <mat-card>
-        <mat-toolbar>
-            <mat-toolbar-row style="justify-content: space-between;">
-              <div class="top-value">
-                  <i class="material-icons" *ngIf="count === 0">star_border</i>
-                  <i class="material-icons" *ngIf="count > 0">star</i>
-                  <span>Избранное:</span>
-                  <span style="padding-top:5px;">{{count}}</span>
-              </div>
-              <div class="top-search">
-                <mat-form-field class="example-form-field">
-                  <input matInput type="text" placeholder="Search" [(ngModel)]="value"/>
-                  <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-                    <mat-icon>close</mat-icon>
-                  </button>
-                </mat-form-field>
-              </div>
-              <div class="top-select">
-                  <mat-form-field>
-                      <mat-select placeholder="Сортировать" (selectionChange)="sortFilmsItems($event)">
-                        <mat-option *ngFor="let sort of sorting" [value]="sort.value">
-                          {{ sort.viewValue }}
-                        </mat-option>
-                      </mat-select>
-                    </mat-form-field>
-              </div>
-            </mat-toolbar-row>
-          </mat-toolbar> 
-    </mat-card>
-      
-  </div>
-
-  
   <div class="inner">
+      <div class="top">
+          <mat-card>
+              <mat-toolbar>
+                  <mat-toolbar-row style="justify-content: space-between;">
+                    <div class="top-value">
+                        <i class="material-icons" *ngIf="count === 0">star_border</i>
+                        <i class="material-icons" *ngIf="count > 0">star</i>
+                        <span>Избранное:</span>
+                        <span style="padding-top:5px;">{{count}}</span>
+                    </div>
+                    <div class="top-search">
+                      <div>
+                          <mat-form-field class="example-form-field">
+                              <input matInput type="text" placeholder="Search" [(ngModel)]="value" />
+                            </mat-form-field>
+                      </div>
+                      
+                      <div style="padding-bottom: 9px;">
+                          <button mat-button class="search_btn" (click)="searchFilms()">
+                              <i class="material-icons">search</i>
+                          </button>
+                      </div>
+
+                      
+                      <p class="error">{{message}}</p>
+                      
+                    </div>
+                    <div class="top-select">
+                        <mat-form-field>
+                            <mat-select placeholder="Сортировать" (selectionChange)="sortFilmsItems($event)">
+                              <mat-option *ngFor="let sort of sorting" [value]="sort.value">
+                                {{ sort.viewValue }}
+                              </mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                  </mat-toolbar-row>
+                </mat-toolbar> 
+          </mat-card>
+            
+        </div>
 
     <films-item *ngFor="let film of films" [film]="film" (clickedItem)="setFavoritesFilmsNum($event)"></films-item>
+
+    <div class="show_more">
+      <button mat-button>Показать больше фильмов</button>
+    </div>
+
+    <div *ngIf="films.length < 1" class="noFound">
+      <h2>По вашему запросу ничего не найдено</h2>
+    </div>
 
   </div>
 </div>

@@ -15,6 +15,7 @@ export class FilmsItemComponent implements OnInit {
 
   isSelected:boolean;
 
+
   constructor() { }
 
   sendClickedItem() {
@@ -24,15 +25,10 @@ export class FilmsItemComponent implements OnInit {
     console.log(this.clickedItem);
   }
 
-  // addToFavorites() {
-  //   this.isSelected = !this.isSelected;
-  //   this.favorites.emit(this.isSelected);
-
-  //   console.log(this.isSelected);
-  // }
+  
 
   ngOnInit() {
-  
+    this.isSelected = this.film.favorite;
   }
 
 }

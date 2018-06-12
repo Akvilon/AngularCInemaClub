@@ -28,5 +28,9 @@ export class FilmService {
   getFilm():Film[] {
     return this.films;
   }
+
+  getFilmsByName(value : string) {
+    return this.films.filter((el : Film) => el.name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
+  }
   
 }
