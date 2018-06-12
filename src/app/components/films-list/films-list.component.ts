@@ -77,7 +77,7 @@ export class FilmsListComponent implements OnInit {
 
   searchFilms() {
     if(this.value.length > 3 || this.value.length === 0) {
-      this.films = this.filmService.getFilmsByName(this.value);
+      this.viewFilms = this.filmService.getFilmsByName(this.value);
       this.message = '';
     }else {
       this.message = "Введите более 3-х букв";

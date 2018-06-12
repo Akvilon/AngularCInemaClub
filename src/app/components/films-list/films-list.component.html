@@ -47,11 +47,11 @@
 
     <films-item *ngFor="let film of viewFilms" [film]="film" (clickedItem)="setFavoritesFilmsNum($event)"></films-item>
 
-    <div class="show_more">
+    <div class="show_more" *ngIf = "viewFilms.length > 0">
       <button mat-button (click)="showMore()" [disabled]="viewFilms.length === films.length">Показать больше фильмов</button>
     </div>
 
-    <div *ngIf="films.length < 1" class="noFound">
+    <div *ngIf="viewFilms.length < 1" class="noFound">
       <h2>По вашему запросу ничего не найдено</h2>
     </div>
 
