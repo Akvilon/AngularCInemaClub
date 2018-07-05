@@ -1,5 +1,12 @@
 @import "../../../../variables";
 
+:host {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    position: relative;
+}
+
 
 .mat-card {
     width: 405px;
@@ -69,4 +76,15 @@
     color: $snow !important;
     border: 1px solid transparent !important;
     transition:0.3s !important;
+}
+
+.show_more {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    & button {
+        background: $main;
+        color: $snow;
+    }
 }

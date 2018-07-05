@@ -8,6 +8,9 @@ import { FilmCatalogModule } from './film-catalog/film-catalog.module';
 import { AppComponent } from '../components/app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from './shared/shared.module';
 
 
 
@@ -21,7 +24,10 @@ import { FormsModule } from '@angular/forms';
     MaterialModule,
     FilmCatalogModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    RouterModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

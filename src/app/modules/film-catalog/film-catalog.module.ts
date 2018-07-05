@@ -5,17 +5,25 @@ import { MaterialModule } from '../material.module';
 import { MainComponent } from '../../components/main/main.component';
 import { FilmsItemComponent } from '../../components/films-list/films-item/films-item.component';
 import { FormsModule } from '@angular/forms';
+import { ActorsItemComponent } from '../../components/films-list/actors-item/actors-item.component';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
+
 
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    RouterModule,
+    SharedModule
   ],
   declarations: [
     FilmsListComponent,
     MainComponent,
-    FilmsItemComponent
+    FilmsItemComponent,
+    ActorsItemComponent
+
   ],
   exports:[
     FilmsListComponent,

@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
-import { Film } from '../models/film.model';
 import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class FilmService {
+export class ActorsService {
   apiUrl: string = "https://api.themoviedb.org/3"
   apiKey: string = '0994e7679a856150aadcecf7de489bce'
   movieUrl: string = `${this.apiUrl}/movie`
@@ -26,8 +24,8 @@ export class FilmService {
     private http: HttpClient
   ) {}
 
-  getPopularFilms (page?: number) {
-    return this.http.get(`${this.movieUrl}/popular?page=${page}${this.params}`)
+  getPopularActors (page?: number) {
+    return this.http.get(`${this.personUrl}/popular?page=${page}${this.params}`)
   }
 
   // getFilm():Film[] {

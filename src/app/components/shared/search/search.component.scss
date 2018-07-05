@@ -1,0 +1,38 @@
+@import "../../../../variables";
+
+
+
+
+.top-search {
+    display: flex;
+    align-items: center;
+    width: 400px;
+    position: relative;
+
+    .mat-form-field {
+        width: 250px;
+    }
+
+
+    .search_btn {
+        height: 27px;
+        min-width: 40px;
+        background: none;
+        color: $main;
+        padding:0;
+        line-height: 23px;
+        margin-left: 3px;
+    }
+
+    .error {
+        height: 18px;
+        line-height: 18px;
+        position: absolute;
+        bottom:0;
+        left:0;
+        font-size: 0.750em;
+        color: $error;
+        margin:0;
+        font-weight: 300;
+    }
+}

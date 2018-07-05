@@ -13,28 +13,16 @@
                         <span>Избранное:</span>
                         <span style="padding-top:5px;">{{count}}</span>
                     </div>
-                    <div class="top-search">
-                      <div>
-                          <mat-form-field class="example-form-field">
-                              <input matInput type="text" placeholder="Search" [(ngModel)]="value" />
-                            </mat-form-field>
-                      </div>
-                      
-                      <div style="padding-bottom: 9px;">
-                          <button mat-button class="search_btn" (click)="searchFilms()">
-                              <i class="material-icons">search</i>
-                          </button>
-                      </div>
+                    
+                    <app-search></app-search>
 
-                      
-                      <p class="error">{{message}}</p>
-                      
-                    </div>
                     <div class="top-select">
                         <mat-form-field>
-                            <mat-select placeholder="Сортировать" (selectionChange)="sortFilmsItems($event)">
-                              <mat-option *ngFor="let sort of sorting" [value]="sort.value">
-                                {{ sort.viewValue }}
+                            <mat-select placeholder="Сортировать" [(value)]="selected">
+                              <mat-option *ngFor="let sort of sorting" 
+                              [value]="sort.value" 
+                              [routerLink]="sort.sortPath">
+                              {{ sort.viewValue }}
                               </mat-option>
                             </mat-select>
                           </mat-form-field>
@@ -45,15 +33,8 @@
             
         </div>
 
-    <films-item *ngFor="let film of viewFilms" [film]="film" (clickedItem)="setFavoritesFilmsNum($event)"></films-item>
+        <router-outlet></router-outlet>
 
-    <div class="show_more" *ngIf = "viewFilms.length > 0">
-      <button mat-button (click)="showMore()" [disabled]="viewFilms.length === films.length">Показать больше фильмов</button>
-    </div>
-
-    <div *ngIf="viewFilms.length < 1" class="noFound">
-      <h2>По вашему запросу ничего не найдено</h2>
-    </div>
 
   </div>
 </div>
