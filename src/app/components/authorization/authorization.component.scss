@@ -1,0 +1,85 @@
+@import "../../../variables";
+
+:host {
+    display: block;
+    width: 100%;
+    height: 100vh;
+}
+
+
+.wrapper {
+    display: flex;
+    position: absolute;
+    top:0;
+    bottom:0;
+    left: 0;
+    right:0;
+    background: $main;
+    z-index: 1002;
+
+    .inner {
+        width: 100%;
+        height: 100%;
+        margin: auto;
+        background: url('../../../assets/img/login_layout.jpg') no-repeat;
+        background-size: cover;
+        filter: blur(10px);
+        filter: brightness(0.3);
+    }
+    .login {
+        position: absolute;
+        top: 250px;
+        left: 40%;
+        margin: auto;
+        width: 400px;
+        // background: $snow;
+        background: rgba(255, 255, 255, 0.9);
+        -webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+        border: 4px solid transparent;
+        border-radius: 3px;
+        padding: 30px 0px;
+        
+
+        .title {
+            & h2 {
+                text-align: center;
+                color: $main;
+                padding: 30px 0px;
+            }
+        }
+
+        nav {
+            display: flex;
+            & a {
+                display: block;
+                text-decoration: none;
+                width: 50%;
+                height: 40px;
+                line-height: 40px;
+                text-align: center;
+                background: $snow;
+                color: $main;
+                transition: .3s;
+            }
+            .login_link {
+                // border: 1px solid $snow; 
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+            }
+            .reg_link {
+                // border: 1px solid $snow; 
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+            }
+
+            .nav_link_activ {
+                color: $snow;
+                background: $main;
+                transition: .3s;
+            }
+        }
+    
+    }
+}

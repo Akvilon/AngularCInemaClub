@@ -1,0 +1,38 @@
+<div class="wrapper">
+
+  <div class="toggle" (click)="isShow=!isShow" [ngClass]="{active: isShow}" *ngIf="this.actors.length > 1">
+    <i class="fas fa-search"></i>
+  </div>
+
+  <div class="panel_wrapper">
+    <mat-toolbar class="panel" [ngClass]="{push: isShow}">
+      <mat-toolbar-row>
+        <app-search (sendString)="getStringValue($event)"></app-search>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+
+
+
+
+  <div class=actors_card *ngFor="let actor of actors" [routerLink]="[ '/actors', actor.id]">
+    <div class="title">
+      <h2>{{actor.name}}</h2>
+    </div>
+    <div class="img">
+      <img [src]="apiService.getPosters(actor.profile_path)" alt="small icon">
+    </div>
+    <!-- <div>
+      <p>{{actor.popularity}}</p>
+    </div> -->
+
+  </div>
+
+  <app-spinner *ngIf="this.isLoading"></app-spinner>
+
+  <div *ngIf="this.actors.length < 1 && this.isLoading == false">Актер не найден</div>
+
+  <div class="show_more" (click)="showMoreActors()" *ngIf="this.actors.length > 1">
+    <button mat-raised-button mat-button color="primary">Показать больше</button>
+  </div>
+</div>

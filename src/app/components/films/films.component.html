@@ -1,0 +1,48 @@
+<div class="wrapper">
+
+  <div class="toggle" (click)="isShow=!isShow" [ngClass]="{active: isShow}" *ngIf="this.films.length > 1">
+    <i class="fas fa-search"></i>
+  </div>
+
+  <div class="panel_wrapper">
+    <mat-toolbar class="panel" [ngClass]="{push: isShow}">
+      <mat-toolbar-row>
+        <app-search (sendString)="getStringValue($event)"></app-search>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+
+
+
+  <div class="films">
+
+    <div class="card_wrapper" *ngFor="let film of films" [routerLink]="[ '/films', film.id]">
+      <mat-card>
+        <mat-card-header>
+          <div class="ava" mat-card-avatar>
+            <img [src]="apiService.getPosters(film.backdrop_path)" alt="small icon">
+          </div>
+          <mat-card-title>{{film.title}}</mat-card-title>
+          <mat-card-subtitle></mat-card-subtitle>
+        </mat-card-header>
+        <div class="img_box">
+          <img mat-card-image [src]="apiService.getPosters(film.poster_path)" alt="{{film.title}}">
+        </div>
+        <mat-card-content>
+          <p>
+            {{film.overview}}
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+
+    <app-spinner *ngIf="this.isLoading"></app-spinner>
+
+    <div *ngIf="this.films.length < 1 && this.isLoading == false">Фильм не найден</div>
+
+    <div class="show_more" (click)="showMoreFilms()" *ngIf="this.films.length > 1">
+      <button mat-raised-button mat-button color="primary">Показать больше</button>
+    </div>
+  </div>
+</div>

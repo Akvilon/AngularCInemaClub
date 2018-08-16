@@ -1,20 +1,38 @@
-<mat-toolbar color="primary">
-        <mat-toolbar-row>
-          <span>Angular Cinema Club</span>
-          <span class="example-spacer"></span>
+<div class="wrapper">
 
-          <div style="margin-left:auto;">
-                <a mat-button 
-                *ngFor="let link of links" 
-                [routerLink]="link.path" 
-                [routerLinkActive]="link.active"> 
-                <mat-icon style="padding-right: 10px;" class="example-icon">{{link.icon}}</mat-icon>{{link.label}}
-            </a>
-          </div>
-          
-        </mat-toolbar-row>
-      </mat-toolbar>
-    
+  <mat-toolbar class="header" color="primary">
+    <mat-toolbar-row>
+
+      <div class="logo"></div>
+
+      <span>Angular Cinema Club</span>
+
+      <div class="line"></div>
+
+      <div *ngIf="this.authService.isAuth" class="links" style="margin-left:50px">
+        <a mat-button *ngFor="let link of links" [routerLink]="link.path" [routerLinkActive]="link.active">
+          <i style="padding-right: 10px;font-size: 18px;" class="fas {{link.icon}}"></i>{{link.label}}
+        </a>
+      </div>
+
+      <div class="logout" *ngIf="this.authService.isAuth">
+        <button mat-icon-button [matMenuTriggerFor]="menu" style="width: 100%;">
+          <i class="fas fa-user-circle" style="font-size: 40px;margin-right: 10px;"></i>
+          <i class="fas fa-angle-down"></i>
+        </button>
+        <mat-menu #menu="matMenu" style="margin-top: 70px;">
+          <button mat-menu-item (click)="exit()">
+            <span>Выйти</span>
+          </button>
+
+        </mat-menu>
+      </div>
 
 
-<router-outlet></router-outlet>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+
+
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,174 @@
+@import "../../../variables";
+
+:host {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+}
+
+
+.wrapper {
+    width: 90%;
+    margin: auto;
+    position: relative;
+
+    .toggle {
+        position: fixed;
+        top: 100px;
+        right: 28px;
+        cursor: pointer;
+        & i {
+            font-size: 34px;
+            color: grey;
+        }
+    }
+    .active i{
+        color: $main;
+    }
+    .panel_wrapper {
+        height: 0;
+        width: 90%;
+        display: flex;
+        justify-content: flex-end;
+        position: fixed;
+        top: 80px;
+        z-index: 1001;
+        margin-right: 20px;
+        .panel {
+            width: 0;
+            overflow: hidden;
+            background: $snow;
+            box-shadow: 0 3px 18px -2px rgba(0,0,0,.2), 
+                        0 2px 2px 0 rgba(0,0,0,.14), 
+                         0 1px 5px 0 rgba(0,0,0,.12);
+            transition: 0.5s;
+            
+        }
+        .push {
+            width: 470px;
+            transition: 0.5s;
+        }
+    
+    }
+       
+    
+
+    
+
+    .films {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+        padding: 110px 0px 30px 0px;
+    
+        
+        .card_wrapper {
+            width: 25%;
+            .mat-card {
+               
+                margin: 0px 30px 30px 0px;
+                padding: 15px 0px;
+            
+                box-shadow: 0 3px 18px -2px rgba(0,0,0,.2), 
+                            0 2px 2px 0 rgba(0,0,0,.14), 
+                            0 1px 5px 0 rgba(0,0,0,.12);
+                &:hover {
+                    cursor:pointer;
+                }
+                .mat-card-header {
+                    padding-bottom: 15px;
+                    align-items: center;
+                }
+                .ava {
+            
+                    height: 50px;
+                    width: 77px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-left: 15px;
+        
+                    & img {
+                        border-radius: 100%;
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+            
+                .img_box {
+                    overflow: hidden;
+                    height: 500px;
+                }
+                .img_box:hover .mat-card-image{
+                    transform: scale(1.05);
+                    transition:0.5s;
+                }
+                .mat-card-image {
+                    height: 500px;
+                    width: 100%;
+                    margin:0;
+                    transition:0.5s;
+                }
+                .mat-card-title {
+                    padding-left:7px;
+                    font-size: 1em;
+                    color: $main;
+                }
+                .mat-card-subtitle {
+                    padding-left:7px;
+                    font-size: 0.875em;
+                    color: $main;
+                }
+                .mat-card-content {
+                    margin: 15px 0px;
+                    padding: 0px 15px;
+                    max-width: 403px;
+                    height: 85px;
+                    overflow: hidden;
+                    text-align: justify;
+                    color: $main;
+    
+                   
+                }
+                .mat-card-actions {
+                    margin:0;
+                    padding: 0px 15px;
+                    & button {
+                        background: $snow;
+                        border: 1px solid $main;
+                        color: $main;
+                        transition:0.3s;
+                    }
+                    
+                    
+                }
+            }
+            
+        }
+        
+        
+        .active {
+            
+            background: $main !important;
+            color: $snow !important;
+            border: 1px solid transparent !important;
+            transition:0.3s !important;
+        }
+        
+        .show_more {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        
+            & button {
+                background: $main;
+                color: $snow;
+            }
+        }
+    }
+    
+    
+}
+

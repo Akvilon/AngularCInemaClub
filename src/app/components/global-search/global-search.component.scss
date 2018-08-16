@@ -1,18 +1,16 @@
-@import "../../../../variables";
+@import "../../../variables";
 
-:host {
-    display: block;
-    width: 100%;
-}
+
 
 
 .top-search {
     display: flex;
     align-items: center;
+    width: 400px;
     position: relative;
 
     .mat-form-field {
-        width: 100%;
+        width: 300px;
     }
 
 
@@ -20,7 +18,7 @@
         height: 27px;
         min-width: 40px;
         background: none;
-        color: $main;
+        color: $snow;
         padding:0;
         line-height: 23px;
         margin-left: 3px;

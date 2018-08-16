@@ -1,19 +1,17 @@
-
-
 <div class="top-search">
-  <div>
-      <mat-form-field class="example-form-field">
-          <input matInput type="text" placeholder="Search" [(ngModel)]="value" />
+    <div style="width: 100%;">
+        <mat-form-field class="example-form-field">
+            <input matInput type="text" placeholder="Поиск" [(ngModel)]="searchValue" (keydown.enter)="sendValue()" />
         </mat-form-field>
-  </div>
-  
-  <div style="padding-bottom: 9px;">
-      <button mat-button class="search_btn" (click)="searchFilms()">
-          <i class="material-icons">search</i>
-      </button>
-  </div>
+    </div>
 
-  
-  <p class="error">{{message}}</p>
-  
+    <div style="padding-bottom: 9px;">
+        <!-- <button mat-button class="search_btn">
+            Go!
+        </button> -->
+    </div>
+
+
+    <p class="error"></p>
+
 </div>

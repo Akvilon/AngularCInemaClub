@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-search',
@@ -7,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
-  value:string ='';
+  searchValue: string = '';
+
+  @Output() sendString = new EventEmitter<string>();
 
   constructor() { }
 
@@ -15,7 +20,15 @@ export class SearchComponent implements OnInit {
   //   return this.films.filter((el : Film) => el.name.toLowerCase().indexOf(value.toLowerCase()) !== -1);
   // }
 
+
+
+  sendValue() {
+
+    this.sendString.emit(this.searchValue);
+  }
+
   ngOnInit() {
+
   }
 
 }

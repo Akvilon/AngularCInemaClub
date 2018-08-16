@@ -1,26 +1,64 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FilmsListComponent } from '../components/films-list/films-list.component';
 import { MainComponent } from '../components/main/main.component';
-import { ActorsItemComponent } from '../components/films-list/actors-item/actors-item.component';
-import { FilmsItemComponent } from '../components/films-list/films-item/films-item.component';
-
+import { ActorsComponent } from '../components/actors/actors.component';
+import { FilmsComponent } from '../components/films/films.component';
+import { AuthorizationComponent } from '../components/authorization/authorization.component';
+import { AuthGuard } from '../auth.guard';
+import { LoginComponent } from '../components/authorization/login/login.component';
+import { RegistrationComponent } from '../components/authorization/registration/registration.component';
+import { FilmCardComponent } from '../components/films/film-card/film-card.component';
+import { ActorCardComponent } from '../components/actors/actor-card/actor-card.component';
+import { NotFoundComponent } from '../components/not-found/not-found.component';
 
 
 const routes: Routes = [
 
-  { path: '',redirectTo: 'main',pathMatch: 'full'},
-  { path: 'main', component: MainComponent },
-  { path: 'films-list', component: FilmsListComponent, 
+  {
+    path: '', redirectTo: '/auth/login', pathMatch: 'full'
+  },
+
+  {
+    path: 'auth',
+    component: AuthorizationComponent,
     children: [
-      { path: 'films', component: FilmsItemComponent },
-      { path: 'actors', component: ActorsItemComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'registration', component: RegistrationComponent }
     ]
   },
-  
+
+  {
+    path: 'main',
+    component: MainComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'films',
+    component: FilmsComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'films/:id',
+    component: FilmCardComponent,
+    canActivate: [AuthGuard]
+  },
+
+  {
+    path: 'actors',
+    component: ActorsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'actors/:id',
+    component: ActorCardComponent,
+    canActivate: [AuthGuard]
+  },
 
 
-  // { path: '**', component: PageNotFoundComponent }
+
+  { path: '**', component: NotFoundComponent }
 ];
 
 

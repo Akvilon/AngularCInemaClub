@@ -1,0 +1,66 @@
+<div class="wrapper">
+
+  <div class="actor_card" *ngIf="!isLoading">
+    <div class="img_box">
+      <div class="img">
+        <img [src]="apiService.getPosters(actorCard[0].profile_path)" alt="">
+      </div>
+    </div>
+
+    <div class="info_box">
+      <div class="info">
+        <div class="title">
+          <div class="title_logo_box">
+            <div class="circ1"></div>
+            <div class="circ2"></div>
+          </div>
+          <div>
+            <h2>{{actorCard[0].name}}</h2>
+          </div>
+
+        </div>
+        <div class="add_info">
+          <p>Популярность: </p>
+          <span>{{actorCard[0].popularity}}</span>
+        </div>
+
+        <hr>
+
+
+
+        <div class="known_box">
+          <h2>Фильмы с участием актера:</h2>
+          <div class="known">
+            <div class="known_card" *ngFor="let movie of actorCard[0].known_for">
+              <div [routerLink]="[ '/films', movie.id]">
+                <img [src]="apiService.getPosters(movie.backdrop_path)" alt="">
+                <h3>{{movie.title}}</h3>
+                <h4>Релиз: {{movie.release_date}}</h4>
+                <div class="known_card_info">
+                  <p>Оценка:</p>
+                  <span>{{movie.vote_average}}</span>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="known_card" *ngFor="let item of similarMovies">
+              <div (click)="openSimilar(item.id)" [routerLink]="[ '/actors', item.id]">
+                <img [src]="apiService.getPosters(item.backdrop_path)" alt="small icon">
+                <h3>{{item.title}}</h3>
+                <h4>Релиз: {{item.release_date}}</h4>
+                <div class="known_card_info">
+                  <p>Оценка:</p>
+                  <span>{{item.vote_average}}</span>
+                </div>
+              </div>
+            </div> -->
+          </div>
+        </div>
+
+      </div>
+
+
+
+    </div>
+  </div>
+  <app-spinner *ngIf="this.isLoading"></app-spinner>
+</div>

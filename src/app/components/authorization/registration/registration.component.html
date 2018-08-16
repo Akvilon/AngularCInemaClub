@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <div class="form custom">
+    <form style="width: 100%;" (ngSubmit)="register()">
+      <div style="width: 100%;">
+        <mat-form-field>
+          <input matInput placeholder="Введите имя" [(ngModel)]="user" name="user">
+        </mat-form-field>
+      </div>
+      <div style="width: 100%;">
+        <mat-form-field>
+          <input matInput placeholder="Введите пароль" [(ngModel)]="pass" name="pass">
+        </mat-form-field>
+      </div>
+      <div class="login_btn">
+        <button mat-raised-button mat-button color="primary">Зарегестрироваться</button>
+      </div>
+    </form>
+  </div>
+</div>

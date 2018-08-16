@@ -1,9 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
+* {
+    margin:0;
+    padding:0;
+}
+
 body { 
     margin: 0; 
     padding:0;
     font-size: 1em;
+    font-family: Roboto,"Helvetica Neue",sans-serif;
 
     & button {
         border:none;
@@ -14,6 +20,89 @@ body {
 @import "./variables.scss";
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import "~@angular/material/theming";
+
+
+
+/// Custom Colors ///
+
+$custom-colors: (
+  50: #fff,
+  100: #bbdefb,
+  200: #90caf9,
+  300: #64b5f6,
+  400: #42a5f5,
+  500: #2196f3,
+  600: #060a2d,
+  700: #1976d2,
+  800: #1565c0,
+  900: #0d47a1,
+  A100: #82b1ff,
+  A200: #448aff,
+  A400: #2979ff,
+  A700: #2962ff,
+  contrast: (
+    50: $black-87-opacity,
+    100: $black-87-opacity,
+    200: $black-87-opacity,
+    300: $black-87-opacity,
+    400: $black-87-opacity,
+    500: white,
+    600: white,
+    700: white,
+    800: $white-87-opacity,
+    900: $white-87-opacity,
+    A100: $black-87-opacity,
+    A200: white,
+    A400: white,
+    A700: white,
+  )
+);
+$mat-light-theme-foreground: (
+  base:              black,
+  divider:          #333,
+  dividers:          $black-12-opacity,
+  disabled:          rgba(black, 0.38),
+  disabled-button:   rgba(black, 0.38),
+  disabled-text:     rgba(black, 0.38),
+  hint-text:         grey,
+  secondary-text:    rgba(black, 0.38),
+  icon:              rgba(black, 0.54),
+  icons:             rgba(black, 0.54),
+  text:              rgba(black, 0.87),
+  slider-min:        rgba(black, 0.87),
+  slider-off:        rgba(black, 0.26),
+  slider-off-active: rgba(black, 0.38),
+);
+$mat-dark-theme-foreground: (
+  base:              $main,
+  divider:           $white-12-opacity,
+  dividers:          $white-12-opacity,
+  disabled:           grey,
+  disabled-button:    grey,
+  disabled-text:      grey,
+  hint-text:         $main,
+  secondary-text:    $main,
+  icon:               grey,
+  icons:              grey,
+  text:              $main,
+  slider-min:        $main,
+  slider-off:        $main,
+  slider-off-active: $main,
+);
+
+/// Custom theme ///
+
+$custom-primary: mat-palette($custom-colors, 600, 200, A700);
+$custom-accent: mat-palette($mat-green, 600, 200, A700);
+$custom-warn: mat-palette($mat-deep-orange, 600, A700, A700);
+
+$custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
+
+.custom {
+  @include angular-material-theme($custom-theme);
+
+}
 
 
 .mat-toolbar.mat-primary {
@@ -51,4 +140,17 @@ body {
 .mat-option-text {
     font-size: 16px;
     font-weight: 300;
+}
+
+
+.mat-tab-labels {
+    justify-content: flex-start;
+}
+.mat-tab-label {
+    width: 50%;
+    padding: 0px 0px;
+}
+
+.mat-menu-item {
+    text-align: center !important;
 }

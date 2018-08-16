@@ -1,0 +1,59 @@
+<div class="wrapper">
+
+  <div class="film_card" *ngIf="!isLoading">
+    <div class="img_box">
+      <div class="img">
+        <img [src]="apiService.getPosters(filmCard[0].poster_path)" alt="">
+      </div>
+    </div>
+
+    <div class="info_box">
+      <div class="info">
+        <div class="title">
+          <div class="title_logo_box">
+            <div class="circ1"></div>
+            <div class="circ2"></div>
+          </div>
+          <div>
+            <h2>{{filmCard[0].title}}</h2>
+          </div>
+
+        </div>
+        <div class="add_info">
+          <h3>Дата релиза: {{filmCard[0].release_date}}</h3>
+          <p>Средняя оценка фильма: </p>
+          <span>{{filmCard[0].vote_average}}</span>
+        </div>
+
+        <hr>
+        <div class="overview">
+          <p>{{filmCard[0].overview}}</p>
+        </div>
+
+
+        <div class="similar_box">
+          <h2>Похожие фильмы:</h2>
+          <div class="similar">
+
+            <div class="similar_card" *ngFor="let item of similarMovies">
+              <div (click)="openSimilar(item.id)" [routerLink]="[ '/films', item.id]">
+                <img [src]="apiService.getPosters(item.backdrop_path)" alt="small icon">
+                <h3>{{item.title}}</h3>
+                <h4>Релиз: {{item.release_date}}</h4>
+                <div class="similar_card_info">
+                  <p>Оценка:</p>
+                  <span>{{item.vote_average}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+    </div>
+  </div>
+  <app-spinner *ngIf="this.isLoading"></app-spinner>
+</div>
