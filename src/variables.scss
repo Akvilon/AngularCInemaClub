@@ -4,3 +4,12 @@ $main : #060a2d;
 $snow : #ffffff;
 $gold : #FFD700;
 $error: #fc515c;
+
+
+@mixin placeholder {
+    ::-webkit-input-placeholder {@content}
+    :-moz-placeholder           {@content}
+    ::-moz-placeholder          {@content}
+    :-ms-input-placeholder      {@content}  
+  }
+  

@@ -18,15 +18,17 @@ export class AuthService {
 
   }
 
-  login(username: string, password: string): Observable<any> {
-    return this.http.post(`${this.authUrl}/login`, { username, password })
+  login(useremail: string, password: string): Observable<any> {
+
+    return this.http.post(`${this.authUrl}/login`, { "email": useremail, "password": password })
       .pipe(
         retry(2),
         tap(res => {
+
           if (res.token) {
             localStorage.setItem('auth_token', res.token);
           } else {
-            console.log('error');
+            console.log('error req');
           }
         }),
     );

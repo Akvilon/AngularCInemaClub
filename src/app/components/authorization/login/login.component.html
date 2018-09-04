@@ -1,18 +1,48 @@
 <div class="wrapper">
   <div class="form custom">
-    <form style="width: 100%;" (ngSubmit)="login()">
-      <div style="width: 100%;">
+
+
+    <form class="form_inner" autocomplete="off" style="width: 100%;" [formGroup]="form" novalidate (ngSubmit)="login()">
+      <!-- <div style="width: 100%;">
         <mat-form-field>
-          <input matInput placeholder="Введите имя" [(ngModel)]="user" name="user">
+          <input matInput type="email" placeholder="Введите email" name="user" formControlName="user">
+
+          <div class="user_errors">
+            <p *ngIf="form.controls['user'].hasError('minlength') || form.controls['user'].hasError('maxlength')">Не соответствует длина (мин 5, макс 25)</p>
+            <p *ngIf="form.controls['user'].hasError('required')"> Поле не может быть пустым</p>
+            <p *ngIf="form.controls['user'].hasError('pattern')"> Неверный формат</p>
+          </div>
+
+
         </mat-form-field>
       </div>
+
+
       <div style="width: 100%;">
         <mat-form-field>
-          <input matInput placeholder="Введите пароль" [(ngModel)]="pass" name="pass">
+          <input matInput type="password" placeholder="Введите пароль" name="pass" formControlName="pass">
         </mat-form-field>
+      </div> -->
+      <div style="width: 100%;">
+        <input class="auth_inpt" type="text" autocomplete="off" placeholder="Введите email" name="user" formControlName="user" [ngClass]="{active: form.controls['user'].dirty && form.controls['user'].invalid}">
+        <div class="user_errors">
+          <p *ngIf="form.controls['user'].hasError('minlength') || form.controls['user'].hasError('maxlength')">Не соответствует длина (мин 5, макс 25)</p>
+          <p *ngIf="form.controls['user'].hasError('required') && form.controls['user'].dirty"> Поле не может быть пустым</p>
+          <p *ngIf="form.controls['user'].hasError('pattern')"> Неверный формат</p>
+        </div>
       </div>
+      <div style="width: 100%;">
+        <input class="auth_inpt" type="password" placeholder="Введите пароль" name="pass" formControlName="pass" [ngClass]="{active: form.controls['pass'].dirty && form.controls['pass'].invalid}">
+        <div class="pass_errors">
+          <p *ngIf="form.controls['pass'].hasError('minlength') || form.controls['pass'].hasError('maxlength')">Не соответствует длина (мин 5, макс 25)</p>
+          <p *ngIf="form.controls['pass'].hasError('required') && form.controls['pass'].dirty"> Поле не может быть пустым</p>
+          <p *ngIf="form.controls['pass'].hasError('pattern')"> Неверный формат (хотя бы одна цифра и большая латинская буква)</p>
+        </div>
+      </div>
+
       <div class="login_btn">
-        <button mat-raised-button mat-button color="primary">Войти</button>
+        <button mat-raised-button mat-button color="base" (click)="form.reset()">Сбросить</button>
+        <button type="submit" mat-raised-button mat-button color="primary" [disabled]="!form.valid">Войти</button>
       </div>
     </form>
   </div>

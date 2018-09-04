@@ -9,52 +9,15 @@
     <nav>
       <a class="login_link" routerLink="/auth/login" routerLinkActive="nav_link_activ">Вход</a>
       <a class="reg_link" routerLink="/auth/registration" routerLinkActive="nav_link_activ">Регистрация</a>
+
+      <div class="stub" (click)="showTooltip()"></div>
+
+      <div class="tooltip" [ngClass]="{show: isShow}">
+        <p>Эта функция станет доступна в скором времени</p>
+      </div>
     </nav>
 
     <router-outlet></router-outlet>
-
-    <!-- <mat-tab-group>
-      <mat-tab label="Вход">
-        <div class="form custom">
-          <form style="width: 100%;">
-            <div style="width: 100%;">
-              <mat-form-field>
-                <input matInput placeholder="Введите имя">
-              </mat-form-field>
-            </div>
-            <div style="width: 100%;">
-              <mat-form-field>
-                <input matInput placeholder="Введите пароль">
-              </mat-form-field>
-            </div>
-            <div class="login_btn">
-              <button mat-raised-button mat-button color="primary">Войти</button>
-            </div>
-          </form>
-        </div>
-      </mat-tab>
-      <mat-tab label="Регистрация">
-        <div class="form custom">
-          <form style="width: 100%;" (ngSubmit)="register()">
-            <div style="width: 100%;">
-              <mat-form-field>
-                <input matInput placeholder="Введите имя" [(ngModel)]="user" name="user">
-              </mat-form-field>
-            </div>
-            <div style="width: 100%;">
-              <mat-form-field>
-                <input matInput placeholder="Введите пароль" [(ngModel)]="pass" name="pass">
-              </mat-form-field>
-            </div>
-            <div class="login_btn">
-              <button mat-raised-button mat-button color="primary">Зарегестрироваться</button>
-            </div>
-          </form>
-        </div>
-      </mat-tab>
-    </mat-tab-group> -->
-
-
 
   </div>
 </div>

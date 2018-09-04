@@ -10,10 +10,44 @@
     .mat-form-field {
         width: 100%;
     }
-
+    .form_inner {
+        .auth_inpt {
+            width: 100%;
+            height: 30px;
+            outline: none;
+            border: none;
+            background: none;
+            border-bottom: 1px solid $main;
+            font-size: 1em;
+            color: $main;
+            
+        }
+        @include placeholder {
+            color: rgba(0, 0, 0, 0.38);
+            font-weight:100;
+        }
+        .active {
+            border-bottom: 1px solid red;
+        }
+        .user_errors {
+            height: 32px;
+            & p {
+                color: red;
+                font-size: 0.750em;
+            }
+        }
+        .pass_errors {
+            height: 32px;
+            & p {
+                color: red;
+                font-size: 0.750em;
+            }
+        }
+    }
+    
     .login_btn {
         display: flex;
-        margin-top: 40px;
+        margin-top: 15px;
         margin-bottom: 40px;
 
         .mat-button {

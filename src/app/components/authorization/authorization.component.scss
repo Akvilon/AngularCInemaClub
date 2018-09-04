@@ -52,6 +52,7 @@
 
         nav {
             display: flex;
+            position: relative;
             & a {
                 display: block;
                 text-decoration: none;
@@ -64,20 +65,45 @@
                 transition: .3s;
             }
             .login_link {
-                // border: 1px solid $snow; 
                 border-top-left-radius: 3px;
                 border-bottom-left-radius: 3px;
             }
-            .reg_link {
-                // border: 1px solid $snow; 
+            .reg_link { 
                 border-top-right-radius: 3px;
                 border-bottom-right-radius: 3px;
+                pointer-events: none;
             }
 
             .nav_link_activ {
                 color: $snow;
                 background: $main;
                 transition: .3s;
+            }
+            .stub {
+                position: absolute;
+                right:0;
+                height: 40px;
+                width: 50%;
+            }
+            .tooltip {
+                width: 160px;
+                padding: 10px;
+                position: absolute;
+                right:-200px;
+                top:-20px;
+                background: $snow;
+                border-radius: 3px;
+                opacity: 0;
+                transition: .8s;
+
+                & p {
+                    color: $main;
+                }
+            }
+           
+            .show {
+                opacity: 1;
+                transition: .8s;
             }
         }
     
